@@ -22,7 +22,7 @@ var mecab = Vue.extend({
                     <textarea placeholder="テキストを入力" rows="3" class="form-control" id="InputTextarea" v-model="message"></textarea>
                 </div>
             </div>
-            <div class="text-center myForm"> 
+            <div class="text-center myForm">
                 <input class="btn btn-primary" type="submit" value="送信" @click.prevent="submit">
             </div>
         </form>
@@ -53,7 +53,7 @@ var mecab = Vue.extend({
         },
         methods: {
             submit: function () {
-                http.post(`/${this.selected}`, {"sentence": this.message})
+                http.post(`/${this.selected}`, {"sentence": this.message, "udicts":["userdic_vtml_tag.dic"]})
                     .then(response => {
                         this.results = response.data
                     })
